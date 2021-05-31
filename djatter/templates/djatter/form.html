@@ -1,0 +1,16 @@
+<form class="form" action="{% url 'search:index' %}" method="post">
+  {% csrf_token %}
+  <label for="location"></label>
+  <div class="form__controls">
+    <input
+      placeholder="Search for a location..."
+      class="form__input"
+      type="text"
+      id="location"
+      name="location"
+      required
+    />
+    <button class="form__btn" type="submit">search</button>
+  </div>
+  <span class="form__error">{{ error }}</span>
+</form>

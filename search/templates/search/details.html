@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'djatter/style.css' %}"
+    />
+    <title>Weather</title>
+  </head>
+  <body class="container">
+    {% include "djatter/form.html" %}
+    <div class="w">
+      <h1 class="w__name">
+        {{ data.name }},
+        <span class="w__country"> {{ data.sys.country }} </span>
+      </h1>
+      <p class="w__deg">
+        {{ data.main.temp }}
+        <span class="w__deg-sign"> C&deg;</span>
+      </p>
+
+      <p class="w__desc">
+        {{ data.weather.0.main }}, {{ data.weather.0.description }}
+        <img
+          class="w__icon"
+          src="http://openweathermap.org/img/w/{{ data.weather.0.icon }}.png"
+          alt=""
+        />
+      </p>
+
+      {% include "djatter/searches.html" %}
+    </div>
+  </body>
+</html>

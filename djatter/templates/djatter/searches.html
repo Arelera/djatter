@@ -1,0 +1,21 @@
+<div class="searches">
+  <h2 class="searches__title">Previous <span>Search</span>es</h2>
+  <ul class="searches__list">
+    {% for search in searches %}
+    <li class="searches__item">
+      <small class="searches__date">
+        <time datetime="{{ search.search_date }}">
+          {{ search.search_date }} &rarr;
+        </time>
+      </small>
+      <a class="searches__link" href="{% url 'search:details' search.query %}">
+        {{ search.query }} {% if search.is_valid %}
+        <span>&#10003;</span>
+        {% else %}
+        <span> &#10007; </span>
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
